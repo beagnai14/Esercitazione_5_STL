@@ -54,7 +54,7 @@ bool import_cell0Ds(Polygonal_Mesh& mesh)
     }
 
     mesh.cell0Ds_Id.reserve(mesh.num_cell0Ds);
-    mesh.cell0Ds_coordinates = Eigen::MatrixXd::Zero(2,mesh.num_cell0Ds);
+    mesh.cell0Ds_coordinates = Eigen::MatrixXd::Zero(3,mesh.num_cell0Ds);
 
     for(const string& line : listLines)
     {
