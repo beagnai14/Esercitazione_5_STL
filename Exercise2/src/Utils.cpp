@@ -42,7 +42,7 @@ bool import_cell0Ds(Polygonal_Mesh& mesh)
 
     file.close();
 
-    //remove header of the file
+    //leggere e rimuovere header
     listLines.pop_front();
 
     mesh.num_cell0Ds = listLines.size();
@@ -97,7 +97,7 @@ bool import_cell1Ds(Polygonal_Mesh& mesh)
 
     file.close();
 
-    //remove header of the file
+    //leggere e rimuovere header
     listLines.pop_front();
 	
 	mesh.num_cell1Ds = listLines.size();
@@ -129,7 +129,7 @@ bool import_cell1Ds(Polygonal_Mesh& mesh)
             itor -> second.push_back(id);   
         }
 
-        //TEST2: verify edge zero-length
+        //TEST2: lati con lunghezza non nulla
         int& origin = mesh.cell1Ds_extrema(0, id);
         int& end = mesh.cell1Ds_extrema(1, id);
         if(origin == end)  //coincidono
@@ -157,7 +157,7 @@ bool import_cell2Ds(Polygonal_Mesh& mesh)
     string line;
     while(getline(file, line)) listLines.push_back(line);
 
-    //remove the header
+    //leggere e rimuovere header
     listLines.pop_front();
 
     mesh.num_cell2Ds = listLines.size();
@@ -216,7 +216,7 @@ bool import_cell2Ds(Polygonal_Mesh& mesh)
             itor -> second.push_back(id);   
         }
 
-        //TEST3: verify that every polygon has a non zero-area
+        //TEST3: poligoni con area non nulla
         vector<unsigned int>& vec_vert = mesh.cell2Ds_vertices[id];
         const unsigned int n = vec_vert.size();
 
@@ -224,7 +224,7 @@ bool import_cell2Ds(Polygonal_Mesh& mesh)
         for(size_t i=0; i<n; i++)
         {   
             const unsigned int vi_id = vec_vert[i];
-            const unsigned int vj_id = vec_vert[(i+1)%n]; // connect the first vertice and the last vertice 
+            const unsigned int vj_id = vec_vert[(i+1)%n]; //condizione di relazione tra il primo e l'ultimo vertice 
 
             const MatrixXd coord = mesh.cell0Ds_coordinates;
             const double X_vi = coord(0, vi_id);
