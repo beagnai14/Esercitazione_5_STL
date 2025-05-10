@@ -18,8 +18,8 @@ int main()
         return 1;
     }
 
-    //*TEST1: all marker are well stored
-    //marker=0 identify an internal cell
+    //*TEST1
+    //marker=0 se la cella è interna
      map<unsigned int, list<unsigned int>>& m_0Ds_markers = mesh.cell0Ds_markers;
      map<unsigned int, list<unsigned int>>& m_1Ds_markers = mesh.cell1Ds_markers;
      map<unsigned int, list<unsigned int>>& m_2Ds_markers = mesh.cell2Ds_markers;
@@ -51,7 +51,7 @@ int main()
      }
 
 
-     //TEST4: verify the final export 
+     //TEST4: export finale 
     Gedim::UCDUtilities utilities;
     utilities.ExportPoints("./Cell0Ds.inp",
                            mesh.cell0Ds_coordinates);
