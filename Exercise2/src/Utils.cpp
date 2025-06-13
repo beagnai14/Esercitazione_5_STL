@@ -236,7 +236,7 @@ bool import_cell2Ds(Polygonal_Mesh& mesh)
         }
         area = abs(area / 2.0);
 
-        if(area <= 1e-16)
+        if(area <= 1e-12)
         {
             cerr<<"TEST NOT PASSED: the polygon " << id << " has area equal to zero";
             return false;
